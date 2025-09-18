@@ -1,4 +1,4 @@
-# buzzline-04-case
+# buzzline-04-vrtachnik
 
 We can analyze and visualize different types of streaming data as the information arrives.
 
@@ -215,6 +215,56 @@ For each one, you will need to:
    - Look in the producers folder for csv_producer_case.
    - Look in the consumers folder for csv_consumer_case.
 
+## Custom Project Consumer
+
+### Files
+- Producer: `producers/project_producer_vrtachnik.py` (provided, not modified)  
+- Consumer: `consumers/project_consumer_vrtachnik.py` (new)  
+- Data Source: `data/project_live.json`  
+
+### What it does
+The custom consumer reads live JSON messages written by the project producer and visualizes average sentiment by author in real time.
+
+- Bars represent authors  
+- Bar height shows number of messages  
+- Bar color represents average sentiment (0–1, red to green)  
+- Chart updates as new messages arrive  
+
+### Why it’s useful
+It shows not only who is active but also the tone of their contributions, combining volume and sentiment in one view.
+
+### How to run
+Open two terminals in the project root (activate your venv first).
+
+Producer (leave running)
+
+Windows (PowerShell):
+```powershell
+.\.venv\Scripts\Activate.ps1
+py -3.11 -m producers.project_producer_vrtachnik
+```
+
+macOS / Linux:
+```bash
+source .venv/bin/activate
+python3 -m producers.project_producer_vrtachnik
+```
+
+Consumer (live chart)
+
+Windows (PowerShell):
+```powershell
+.\.venv\Scripts\Activate.ps1
+py -3.11 -m consumers.project_consumer_vrtachnik
+```
+
+macOS / Linux:
+```bash
+source .venv/bin/activate
+python3 -m consumers.project_consumer_vrtachnik
+```
+
+
 ### Review the Application Code
 
 Review the code for both the producer and the consumer.
@@ -229,14 +279,6 @@ Which aspects are similar between the different types of data?
 
 When done, remember to kill the associated terminals for the producer and consumer.
 
-## Possible Explorations
-
-- JSON: Process messages in batches of 5 messages.
-- JSON:Limit the display to the top 3 authors.
-- Modify chart appearance.
-- Stream a different set of data and visualize the custom stream with an appropriate chart.
-- How do we find out what types of charts are available?
-- How do we find out what attributes and colors are available?
 
 ---
 
